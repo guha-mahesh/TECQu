@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Navigation</title>
+    <title>Streak Tracker</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -19,9 +19,31 @@
     </nav>
 
     <div class="content">
-        <h1>Welcome to MyWebsite</h1>
-        <p>Click the navigation links above to explore.</p>
+        <h1>Streak Tracker</h1>
+    <input type="text" id="username" placeholder="Enter username">
+    <button onclick="fetchStreak()">Get Streak</button>
+    <p id="streak">Enter a username and click the button.</p>
     </div>
+
+    <script>
+        async function fetchStreak() {
+    const username = document.getElementById('username').value; // Get user input
+    if (!username) return alert("Please enter a username!"); // Prevent empty input
+
+    try {
+        const response = await fetch(`/api/streak/${username}`); // Use user input
+        const data = await response.json();
+        document.getElementById('streak').innerText = `Streak: ${data.streak} days`;
+    } catch (error) {
+        console.error("Error fetching streak:", error);
+        document.getElementById('streak').innerText = "Error fetching data.";
+    }
+}
+
+const username = document.getElementById('username').value;
+const response = await fetch(`/api/streak/${username}`);
+
+    </script>
 
 </body>
 </html>
