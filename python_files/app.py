@@ -1,6 +1,6 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
-from python_files.getData import get_streak
+from getdata2 import get_streak
 
 app = Flask(__name__)
 CORS(app)  # Enables frontend to communicate with backend
@@ -12,3 +12,4 @@ def api_streak(username):
 
 if __name__ == '__main__':
     app.run(debug=True)
+

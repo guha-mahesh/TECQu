@@ -31,7 +31,7 @@
     if (!username) return alert("Please enter a username!"); // Prevent empty input
 
     try {
-        const response = await fetch(`/api/streak/${username}`); // Use user input
+        const response = await fetch(`http://127.0.0.1:5000/api/streak/${username}`); // Use user input
         const data = await response.json();
         document.getElementById('streak').innerText = `Streak: ${data.streak} days`;
     } catch (error) {
@@ -39,9 +39,6 @@
         document.getElementById('streak').innerText = "Error fetching data.";
     }
 }
-
-const username = document.getElementById('username').value;
-const response = await fetch(`/api/streak/${username}`);
 
     </script>
 
